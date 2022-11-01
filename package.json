@@ -1,0 +1,29 @@
+{
+  "name": "btc-3-pokemontcg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1101yoshiki/btc-3-pokemonTCG.git"
+  },
+  "author": "terasaka&koike",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1101yoshiki/btc-3-pokemonTCG/issues"
+  },
+  "homepage": "https://github.com/1101yoshiki/btc-3-pokemonTCG#readme",
+  "dependencies": {
+    "axios": "^1.1.3"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.1.0"
+  }
+}
