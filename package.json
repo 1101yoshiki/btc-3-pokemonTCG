@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "eslint './*.js'  --fix && prettier --write './*.js'"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,10 @@
   },
   "devDependencies": {
     "chai": "^4.3.6",
-    "mocha": "^10.1.0"
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "mocha": "^10.1.0",
+    "prettier": "^2.7.1"
   }
 }

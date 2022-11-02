@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pokemon TCG</title>
+    <html lang=ja>
+    <meta charset="utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    
+    <link rel="stylesheet" href="index.css">
+  </head>
+  
+  <body>
+    <img src="./picture/PCG_wallpaper_room_day.jpg" alt="top" id="start">
+    <button id="gameStartButton" disabled>Now Loading...</button>
+    <div class="field_main">
+        <div class="field_battle" id="field_battle_cp">
+            <div class="field_battle_pokemon" id="field_battle_pokemon_cp1"> 
+                <!-- <img src="https://images.pokemontcg.io/xy1/1.png" > -->
+            </div>
+            <div class="field_battle_pokemon" id="field_battle_pokemon_cp2">
+                <!-- <img src="https://images.pokemontcg.io/xy1/1.png" > -->
+            </div>
+            <div class="field_battle_pokemon" id="field_battle_pokemon_cp3">
+                <!-- <img src="https://images.pokemontcg.io/xy1/1.png" > -->
+            </div>
+        </div>
+        <input id="battleStartButton" type="submit" value="Battle Start" disabled="true"></input>
+        <hr class="field_centerLine">
+        <img src="./picture/nc181114.png" class="field_mark">
+        <hr class="field_centerLine" id="field_centerLine_right">
+        <div class="field_battle" id="field_battle_player">
+            <div class="field_battle_pokemon" id="field_battle_pokemon_player1">
+                <!-- <img src="https://images.pokemontcg.io/xy1/1.png" > -->
+            </div>
+            <div class="field_battle_pokemon" id="field_battle_pokemon_player2">
+                <!-- <img src="https://images.pokemontcg.io/xy1/1.png" > -->
+            </div>
+            <div class="field_battle_pokemon" id="field_battle_pokemon_player3">
+                <!-- <img src="https://images.pokemontcg.io/xy1/1.png" > -->
+            </div>
+        </div>
+        <div id="resultBox">
+            <p id="result"></p>
+        </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
