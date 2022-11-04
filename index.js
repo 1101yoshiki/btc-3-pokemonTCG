@@ -1,7 +1,7 @@
 // import axios from "axios";
 
 let cardData = [];
-const max = 50;
+const max = 150;
 
 class Pokemonfunctions {
   getAllCards() {
@@ -29,31 +29,21 @@ class Pokemonfunctions {
 }
 
 function selectCard(num) {
-    if (
-      document.getElementById(playerImageInsertTagName[num] + "_order")
-        .innerHTML === ""
-    ) {
-      if (order.length > 0) {
-        document.getElementById(
-          playerImageInsertTagName[num] + "_order"
-        ).innerHTML = order.shift();
-        if (order.length === 0) {
-          document.getElementById("battleStartButton").disabled = false;
-        }
+  if (document.getElementById(playerImageInsertTagName[num] + "_order").innerHTML === "") {
+    if (order.length > 0) {
+      document.getElementById(playerImageInsertTagName[num] + "_order").innerHTML = order.shift();
+      document.getElementById(playerImageInsertTagName[num] + "_order").style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+      if (order.length === 0) {
+        document.getElementById("battleStartButton").disabled = false;
       }
-    } else {
-      order.push(
-        Number(
-          document.getElementById(playerImageInsertTagName[num] + "_order")
-            .innerHTML
-        )
-      );
-      order.sort();
-      document.getElementById(
-        playerImageInsertTagName[num] + "_order"
-      ).innerHTML = "";
-      document.getElementById("battleStartButton").disabled = true;
     }
+  } else {
+    order.push(Number(document.getElementById(playerImageInsertTagName[num] + "_order").innerHTML));
+    order.sort();
+    document.getElementById(playerImageInsertTagName[num] + "_order").innerHTML = "";
+    document.getElementById(playerImageInsertTagName[num] + "_order").style.backgroundColor = "";
+    document.getElementById("battleStartButton").disabled = true;
+  }
 }
 
 function judgement(ply, com) {
@@ -120,9 +110,11 @@ function startBattle() {
   } else {
     resultTotal = "Draw";
   }
-  resultMessageTag.innerText = resultTotal;
-  resultMessageTag.style.display = "block";
-  document.getElementById("resultBox").style.display = "block";
+  setTimeout(() => {
+    resultMessageTag.innerText = resultTotal;
+    resultMessageTag.style.display = "block";
+    document.getElementById("resultBox").style.display = "block";
+  },3000)
 }
 
 window.Pokemonfunctions = Pokemonfunctions;
@@ -137,7 +129,7 @@ const compImageInsertTagName = [
   "field_battle_pokemon_cp2",
   "field_battle_pokemon_cp3",
 ];
-const order = [1, 2, 3];
+let order = [1, 2, 3];
 let cards = [];
 const startButton = document.getElementById("gameStartButton");
 
@@ -146,22 +138,24 @@ func.getAllCards().then((res) => {
   startButton.disabled = false;
   startButton.innerText = "Game Start";
   cards = func.getRandomNumbers(6);
-  document.getElementById(compImageInsertTagName[0]).innerHTML +=
+  document.getElementById(compImageInsertTagName[0]).innerHTML =
     '<img src="./picture/poke_ura.jpg" alt="pokemon card" class="images" width="120">';
-  document.getElementById(compImageInsertTagName[1]).innerHTML +=
+  document.getElementById(compImageInsertTagName[1]).innerHTML =
     '<img src="./picture/poke_ura.jpg" alt="pokemon card" class="images" width="120">';
-  document.getElementById(compImageInsertTagName[2]).innerHTML +=
+  document.getElementById(compImageInsertTagName[2]).innerHTML =
     '<img src="./picture/poke_ura.jpg" alt="pokemon card" class="images" width="120">';
-  for (let i = 0; i < 3; i++) {
-    document.getElementById(playerImageInsertTagName[i]).innerHTML +=
-      '<img src="' +
-      func.getCardImageUrl(cards[i]) +
-      '" alt="pokemon card" class="images" width="120" onclick="selectCard(' +
-      i +
-      ')"><p id="' +
-      playerImageInsertTagName[i] +
-      '_order"></p>';
-  }
+    for (let i = 0; i < 3; i++) {
+      document.getElementById(playerImageInsertTagName[i]).innerHTML =
+        '<img src="' +
+        func.getCardImageUrl(cards[i]) +
+        '" alt="pokemon card" class="images" width="120" onclick="selectCard(' +
+        i +
+        ')"><p id="' +
+        playerImageInsertTagName[i] +
+        '_order" onclick="selectCard(' +
+        i +
+        ')"></p>';
+    }
   const startBtn = document.getElementById("battleStartButton");
   startBtn.addEventListener("click", startBattle);
 });
@@ -170,3 +164,39 @@ startButton.addEventListener("click", () => {
   startButton.style.display = "none";
   document.getElementById("start").style.display = "none";
 });
+
+document.getElementById("end").addEventListener("click", ()=>{
+  window.location.reload();
+});
+
+
+function reStart() {
+  document.getElementById("resultBox").style.display = "none";
+  for (let i = 0; i < 3; i++) {
+    document.getElementById(playerImageInsertTagName[i]).style.pointerEvents = "";
+  }
+  order = [1, 2, 3];
+  cards = func.getRandomNumbers(6);
+  document.getElementById(compImageInsertTagName[0]).innerHTML =
+    '<img src="./picture/poke_ura.jpg" alt="pokemon card" class="images" width="120">';
+  document.getElementById(compImageInsertTagName[1]).innerHTML =
+    '<img src="./picture/poke_ura.jpg" alt="pokemon card" class="images" width="120">';
+  document.getElementById(compImageInsertTagName[2]).innerHTML =
+    '<img src="./picture/poke_ura.jpg" alt="pokemon card" class="images" width="120">';
+    for (let i = 0; i < 3; i++) {
+      document.getElementById(playerImageInsertTagName[i]).innerHTML =
+        '<img src="' +
+        func.getCardImageUrl(cards[i]) +
+        '" alt="pokemon card" class="images" width="120" onclick="selectCard(' +
+        i +
+        ')"><p id="' +
+        playerImageInsertTagName[i] +
+        '_order" onclick="selectCard(' +
+        i +
+        ')"></p>';
+    }
+  const startBtn = document.getElementById("battleStartButton");
+  startBtn.addEventListener("click", startBattle);
+}
+
+document.getElementById("retry").addEventListener("click", reStart);

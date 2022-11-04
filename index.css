@@ -49,17 +49,22 @@ body {
 
 #field_battle_player {
   position: absolute;
+  width: 100%;
+  height: auto;
   bottom: 0%;
 }
 
 #field_battle_cp {
   position: absolute;
+  width: 100%;
+  height: auto;
   top: 0%;
 }
 
 .field_battle_pokemon {
   /* background-color: brown; */
-  width: 20%;
+  display: flex;
+  width: 25%;
   height: 100%;
 }
 
@@ -125,21 +130,36 @@ img {
 }
 
 #field_battle_pokemon_player1_order {
-    position: relative;
-    bottom: 100%;
-    left: 5%;
+  position: relative;
+  bottom: 100%;
+  left: -47%;
+  width:100%;
+  padding: 26%;
+  margin: 0%;
+  text-align: center;
+  font-size: 48pt;
 }
 
 #field_battle_pokemon_player2_order {
-    position: relative;
-    bottom: 100%;
-    left: 5%;
+position: relative;
+bottom: 100%;
+left: -47%;
+width:100%;
+padding: 26%;
+margin: 0%;
+text-align: center;
+font-size: 48pt;
 }
 
 #field_battle_pokemon_player3_order {
-    position: relative;
-    bottom: 100%;
-    left: 5%;
+position: relative;
+bottom: 100%;
+left: -47%;
+width:100%;
+padding: 26%;
+margin: 0%;
+text-align: center;
+font-size: 48pt;
 }
 
 #resultBox {
@@ -161,4 +181,30 @@ img {
     position:absolute;
     top: 33%;
     left: 5%;
+}
+
+#end {
+  position:absolute;
+  /* left: 55%; */
+  right: 35%;
+  top: 80%;
+  width: 100px;
+  height: 50px;
+  font-size: large;
+  background-color:rgb(8, 78, 218);
+  color: white;
+
+  
+}
+
+#retry {
+position: absolute;
+  left: 35%;
+  top: 80%;
+  width: 100px;
+  height: 50px;
+  font-size: large;
+
+  background-color:rgb(8, 78, 218);
+  color: white;
 }

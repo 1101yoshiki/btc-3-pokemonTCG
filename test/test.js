@@ -10,7 +10,7 @@ describe("pokemonfunctions", () => {
   it("should return an array of max numbers of Pokemon cards", () => {
     return pokemonfunctions.getAllCards().then((actual) => {
       expect(Array.isArray(actual)).to.equal(true);
-      expect(actual.length).to.equal(50);
+      expect(actual.length).to.equal(150);
     });
   });
 
